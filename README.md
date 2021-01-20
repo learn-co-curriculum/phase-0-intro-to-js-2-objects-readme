@@ -217,19 +217,13 @@ address.street.line2;
 //=> "2nd Floor"
 ```
 
-**Note**: You might initially think we should use `address.line1` to access the
-value associated with the `line1` key, but `address` and `address.street` are
-_separate_ `Object`s. `address.street` is the _identifier_ for the nested
-`Object` &mdash; the one that contains the `line1` key &mdash; and we can use
-dot notation on that just the same as on the top-level `Object`, `address`.
-Experiment in the REPL to make sure you understand how it works.
+> **Note**: You might initially think we should use `address.line1` to access the value associated with the `line1` key, but `address` and `address.street` are _separate_ `Object`s. `address.street` is the _identifier_ for the nested `Object` &mdash; the one that contains the `line1` key &mdash; and we can use dot notation on that just the same as on the top-level `Object`, `address`. Experiment in the REPL to make sure you understand how it works.
 
 Dot notation is fantastic for readability, as we can just reference the bare key
 name (e.g., `street` or `zipCode`). Because of this simple syntax, it should be
 your go-to strategy for accessing the properties of an `Object`.
 
-***NOTE***: Most people just call it _dot notation_ or the _dot operator_, so
-don't worry too much about remembering the term _member access operator_.
+> **NOTE**: Most people just call it _dot notation_ or the _dot operator_, so don't worry too much about remembering the term _member access operator_.
 
 #### Accessing Nonexistent Properties
 
@@ -320,9 +314,7 @@ when naming your keys, everything will work out:
 If you follow those three rules, you'll be able to access all of an `Object`'s
 properties via bracket notation **or** dot notation.
 
-***Top Tip***: Always name your `Object`'s keys according to the above three rules.
-Keeping everything standardized is good, and being able to access properties
-via dot notation makes the code much more readable.
+> **Top Tip**: Always name your `Object`'s keys according to the above three rules. Keeping everything standardized is good, and being able to access properties via dot notation makes the code much more readable.
 
 #### Accessing Properties Dynamically
 
@@ -460,10 +452,7 @@ Notice that it didn't pick up the keys in the nested `cheesePlate` `Object`
 `wednesdayMenu`. How do you think we could use `Object.keys()` to get a list of
 the keys inside the nested `Object`? Try it out in the REPL.
 
-***NOTE***: The sequence in which keys are ordered in the returned `Array` is not
-consistent across browsers and should not be relied upon. All of the `Object`'s
-keys will be in the `Array`, but you can't count on `keyA` always being at
-index `0` of the `Array` and `keyB` always being at index `1`.
+> **NOTE**: The sequence in which keys are ordered in the returned `Array` is not consistent across browsers and should not be relied upon. All of the `Object`'s keys will be in the `Array`, but you can't count on `keyA` always being at index `0` of the `Array` and `keyB` always being at index `1`.
 
 ### `Object.values()`
 
