@@ -74,7 +74,7 @@ const zipCode = '10004';
 That's solved one issue but reintroduced the same problem we tackled in the
 lesson on `Array`s: storing pieces of related data in a bunch of unrelated
 variables is not a great idea! If only there were a best-of-both-worlds solution
-&mdash; a way to store all of our address information in a single data structure
+— a way to store all of our address information in a single data structure
 while also maintaining a descriptive naming scheme. The data structure we're
 after here is the ***`Object`***.
 
@@ -82,7 +82,7 @@ after here is the ***`Object`***.
 
 Like `Array`s, JavaScript `Object`s are collections of data. They consist of a
 list of _properties_ (_key-value pairs_) bounded by curly braces (`{ }`). The
-properties can point to values of any data type &mdash; even other `Object`s.
+properties can point to values of any data type — even other `Object`s.
 
 We can have empty `Object`s:
 
@@ -217,7 +217,7 @@ address.street.line2;
 //=> "2nd Floor"
 ```
 
-> **Note**: You might initially think we should use `address.line1` to access the value associated with the `line1` key, but `address` and `address.street` are _separate_ `Object`s. `address.street` is the _identifier_ for the nested `Object` &mdash; the one that contains the `line1` key &mdash; and we can use dot notation on that just the same as on the top-level `Object`, `address`. Experiment in the REPL to make sure you understand how it works.
+> **Note**: You might initially think we should use `address.line1` to access the value associated with the `line1` key, but `address` and `address.street` are _separate_ `Object`s. `address.street` is the _identifier_ for the nested `Object` — the one that contains the `line1` key — and we can use dot notation on that just the same as on the top-level `Object`, `address`. Experiment in the REPL to make sure you understand how it works.
 
 Dot notation is fantastic for readability, as we can just reference the bare key
 name (e.g., `street` or `zipCode`). Because of this simple syntax, it should be
@@ -366,7 +366,7 @@ meals.mealName;
 ```
 
 With dot notation, JavaScript doesn't treat `mealName` as a variable
-&mdash; instead it checks whether a property exists with the literal key
+— instead it checks whether a property exists with the literal key
 `mealName`, only finds properties named `breakfast`, `lunch`, and `dinner`, and
 so returns `undefined`. Essentially, dot notation is for when you know the exact
 name of the property in advance, and bracket notation is for when you need to
@@ -411,8 +411,8 @@ meals;
 ```
 
 Without the square brackets, JavaScript treated each key as a literal identifier
-instead of a variable. Bracket notation &mdash; the _computed member access
-operator_ &mdash; once again shows its powers of computation!
+instead of a variable. Bracket notation — the _computed member access
+operator_ — once again shows its powers of computation!
 
 Bracket notation will really come in handy when we start iterating over `Object`s
 and programmatically accessing and assigning properties.
@@ -448,7 +448,7 @@ Object.keys(wednesdayMenu);
 ```
 
 Notice that it didn't pick up the keys in the nested `cheesePlate` `Object`
-&mdash; just the keys from the properties declared at the top level within
+— just the keys from the properties declared at the top level within
 `wednesdayMenu`. How do you think we could use `Object.keys()` to get a list of
 the keys inside the nested `Object`? Try it out in the REPL.
 
