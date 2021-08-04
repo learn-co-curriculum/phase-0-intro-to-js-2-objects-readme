@@ -2,9 +2,9 @@
 
 ## Learning Goals
 
-1. Identify JavaScript `Object`s
-2. Access a value stored in an `Object`
-3. Learn about JavaScript's Object methods
+- Identify JavaScript `Object`s
+- Access a value stored in an `Object`
+- Learn about JavaScript's Object methods
 
 ## Introduction
 
@@ -17,7 +17,15 @@ nondestructively.
 
 Be sure to follow along with the examples in this lesson in [repl.it][].
 
-> **ASIDE**: You may have heard about or be familiar with the concept of _object-oriented programming_. Un-helpfully JavaScript called this thing with curly braces (`{}`) an `Object`, but it is not related to object orientation. There was initially no thought that JavaScript would ever need to accommodate object-oriented programming but as it grew in popularity, the ability to use object orientation was added to the language. A JavaScript `Object`, however, is a _data structure_ consisting of `key`s and `value`s, similar to Ruby's `Hash`, Python's `Dictionary` or C-like languages' `struct`(ure). It is important not to confuse the two.
+> **ASIDE**: You may have heard about or be familiar with the concept of
+> _object-oriented programming_. Un-helpfully JavaScript called this thing with
+> curly braces (`{}`) an `Object`, but it is not related to object orientation.
+> There was initially no thought that JavaScript would ever need to accommodate
+> object-oriented programming but as it grew in popularity, the ability to use
+> object orientation was added to the language. A JavaScript `Object`, however,
+> is a _data structure_ consisting of `key`s and `value`s, similar to Ruby's
+> `Hash`, Python's `Dictionary` or C-like languages' `struct`(ure). It is
+> important not to confuse the two.
 
 ## Identify JavaScript Objects
 
@@ -26,7 +34,7 @@ Addresses are made up of words and numbers, so at first it might make sense to
 store the address as a string:
 
 ```js
-const address = '11 Broadway, 2nd Floor, New York, NY 10004';
+const address = "11 Broadway, 2nd Floor, New York, NY 10004";
 ```
 
 That looks decent enough, but what happens if the company moves to a different
@@ -36,14 +44,14 @@ pattern matching or replace the entire thing. Instead, let's throw the different
 pieces of the address into an `Array`:
 
 ```js
-const address = ['11 Broadway', '2nd Floor', 'New York', 'NY', '10004'];
+const address = ["11 Broadway", "2nd Floor", "New York", "NY", "10004"];
 ```
 
 Now, we can just grab the small piece that we want to update and leave the rest
 as is:
 
 ```js
-address[1] = '3rd Floor';
+address[1] = "3rd Floor";
 
 address;
 //=> ["11 Broadway", "3rd Floor", "New York", "NY", "10004"]
@@ -51,8 +59,7 @@ address;
 
 This seems like a better solution, but it still has its drawbacks. Namely,
 `address[1]` is a **terrible** way to refer to the second line of an address.
-What if there is no second line, e.g., `['11 Broadway', 'New York', 'NY',
-'10004']`? Then `address[1]` will contain the city name instead of the floor
+What if there is no second line, e.g., `['11 Broadway', 'New York', 'NY', '10004']`? Then `address[1]` will contain the city name instead of the floor
 number.
 
 We could standardize it, putting an empty string in `address[1]` if there's no
@@ -64,11 +71,11 @@ To get around this, we could store the individual pieces of the address in
 separate, appropriately-named variables:
 
 ```js
-const street1 = '11 Broadway';
-const street2 = '2nd Floor';
-const city = 'New York';
-const state = 'NY';
-const zipCode = '10004';
+const street1 = "11 Broadway";
+const street2 = "2nd Floor";
+const city = "New York";
+const state = "NY";
+const zipCode = "10004";
 ```
 
 That's solved one issue but reintroduced the same problem we tackled in the
@@ -76,7 +83,7 @@ lesson on `Array`s: storing pieces of related data in a bunch of unrelated
 variables is not a great idea! If only there were a best-of-both-worlds solution
 — a way to store all of our address information in a single data structure
 while also maintaining a descriptive naming scheme. The data structure we're
-after here is the ***`Object`***.
+after here is the **_`Object`_**.
 
 ### What Is an Object?
 
@@ -87,37 +94,36 @@ properties can point to values of any data type — even other `Object`s.
 We can have empty `Object`s:
 
 ```js
-{}
+const obj = {};
 ```
 
 Or `Object`s with a single property:
 
 ```js
-{ key: value }
+const obj = { key: value };
 ```
 
 When we have to represent multiple properties in the same `Object` (which is
 most of the time), we use commas to separate them:
 
 ```js
-{
+const obj = {
   key1: value1,
-  key2: value2
-}
+  key2: value2,
+};
 ```
 
 We can also have nested `Object`s, in which the values associated with one or
 more of the keys is another `Object`:
 
 ```js
-{
+const obj = {
   key1: value1,
   key2: {
     innerKey1: innerValue1,
-    innerKey2: innerValue2
-  }
-}
-
+    innerKey2: innerValue2,
+  },
+};
 ```
 
 There is no limit to how deeply nested our `Object`s can be.
@@ -127,12 +133,12 @@ For a real example, let's define our address as an `Object`:
 ```js
 const address = {
   street: {
-    line1: '11 Broadway',
-    line2: '2nd Floor'
+    line1: "11 Broadway",
+    line2: "2nd Floor",
   },
-  city: 'New York',
-  state: 'NY',
-  zipCode: '10004'
+  city: "New York",
+  state: "NY",
+  zipCode: "10004",
 };
 ```
 
@@ -147,9 +153,9 @@ Multiple properties can have the same value:
 
 ```js
 const meals = {
-  breakfast: 'Avocado toast',
-  lunch: 'Avocado toast',
-  dinner: 'Avocado toast'
+  breakfast: "Avocado toast",
+  lunch: "Avocado toast",
+  dinner: "Avocado toast",
 };
 
 meals.breakfast;
@@ -164,9 +170,9 @@ the final value will be retained. The rest will be overwritten:
 
 ```js
 const meals = {
-  breakfast: 'Avocado toast',
-  breakfast: 'Oatmeal',
-  breakfast: 'Scrambled eggs'
+  breakfast: "Avocado toast",
+  breakfast: "Oatmeal",
+  breakfast: "Scrambled eggs",
 };
 
 meals;
@@ -217,13 +223,19 @@ address.street.line2;
 //=> "2nd Floor"
 ```
 
-> **Note**: You might initially think we should use `address.line1` to access the value associated with the `line1` key, but `address` and `address.street` are _separate_ `Object`s. `address.street` is the _identifier_ for the nested `Object` — the one that contains the `line1` key — and we can use dot notation on that just the same as on the top-level `Object`, `address`. Experiment in the REPL to make sure you understand how it works.
+> **Note**: You might initially think we should use `address.line1` to access
+> the value associated with the `line1` key, but `address` and `address.street`
+> are _separate_ `Object`s. `address.street` is the _identifier_ for the nested
+> `Object` — the one that contains the `line1` key — and we can use dot notation
+> on that just the same as on the top-level `Object`, `address`. Experiment in
+> the REPL to make sure you understand how it works.
 
 Dot notation is fantastic for readability, as we can just reference the bare key
 name (e.g., `street` or `zipCode`). Because of this simple syntax, it should be
 your go-to strategy for accessing the properties of an `Object`.
 
-> **NOTE**: Most people just call it _dot notation_ or the _dot operator_, so don't worry too much about remembering the term _member access operator_.
+> **NOTE**: Most people just call it _dot notation_ or the _dot operator_, so
+> don't worry too much about remembering the term _member access operator_.
 
 #### Accessing Nonexistent Properties
 
@@ -249,22 +261,22 @@ the same properties as above, we need to represent them as strings inside the
 operator:
 
 ```js
-address['street'];
+address["street"];
 //=> { line1: "11 Broadway", line2: "2nd Floor" }
 
-address['street']['line1'];
+address["street"]["line1"];
 //=> "11 Broadway"
 
-address['street']['line2'];
+address["street"]["line2"];
 //=> "2nd Floor"
 
-address['city'];
+address["city"];
 //=> "New York"
 
-address['state'];
+address["state"];
 //=> "NY"
 
-address['zipCode'];
+address["zipCode"];
 //=> "10004"
 ```
 
@@ -280,10 +292,10 @@ example, this is a valid `Object`:
 
 ```js
 const wildKeys = {
-  'Cash rules everything around me.': 'Wu',
-  'C.R.E.A.M.': 'Tang',
-  'Get the money.': 'For',
-  "$ $ bill, y'all!": 'Ever'
+  "Cash rules everything around me.": "Wu",
+  "C.R.E.A.M.": "Tang",
+  "Get the money.": "For",
+  "$ $ bill, y'all!": "Ever",
 };
 ```
 
@@ -314,7 +326,9 @@ when naming your keys, everything will work out:
 If you follow those three rules, you'll be able to access all of an `Object`'s
 properties via bracket notation **or** dot notation.
 
-> **Top Tip**: Always name your `Object`'s keys according to the above three rules. Keeping everything standardized is good, and being able to access properties via dot notation makes the code much more readable.
+> **Top Tip**: Always name your `Object`'s keys according to the above three
+> rules. Keeping everything standardized is good, and being able to access
+> properties via dot notation makes the code much more readable.
 
 #### Accessing Properties Dynamically
 
@@ -330,7 +344,7 @@ _compute_ its value to figure out which property to access. For example, we can
 access the `zipCode` property from our `address` `Object` like so:
 
 ```js
-address['zip' + 'Code'];
+address["zip" + "Code"];
 //=> "10004"
 ```
 
@@ -339,26 +353,26 @@ the value of variables on the fly. For example:
 
 ```js
 const meals = {
-  breakfast: 'Oatmeal',
-  lunch: 'Caesar salad',
-  dinner: 'Chimichangas'
+  breakfast: "Oatmeal",
+  lunch: "Caesar salad",
+  dinner: "Chimichangas",
 };
 
-let mealName = 'lunch';
+let mealName = "lunch";
 
 meals[mealName];
 //=> "Caesar salad"
 ```
 
 By placing `mealName` in the square brackets, we're telling the JavaScript
-engine it needs to _interpret_ the value inside those brackets. It evalutes
+engine it needs to _interpret_ the value inside those brackets. It evaluates
 `mealName`, resolves it to `'lunch'`, and returns "Caesar salad". Note that we
 didn't enclose the key in quotes: the keys themselves are strings, but
 `mealName` is a variable _containing_ a string. If we try to use the `mealName`
 variable with dot notation instead, it doesn't work:
 
 ```js
-mealName = 'dinner';
+mealName = "dinner";
 //=> "dinner"
 
 meals.mealName;
@@ -377,14 +391,14 @@ on an already-created `Object`. We can also use bracket notation to dynamically
 set properties _during the creation of a new `Object`_. For example:
 
 ```js
-const morningMeal = 'breakfast';
-const middayMeal = 'lunch';
-const eveningMeal = 'dinner';
+const morningMeal = "breakfast";
+const middayMeal = "lunch";
+const eveningMeal = "dinner";
 
 const meals = {
-  [morningMeal]: 'French toast',
-  [middayMeal]: 'Personal pizza',
-  [eveningMeal]: 'Fish and chips'
+  [morningMeal]: "French toast",
+  [middayMeal]: "Personal pizza",
+  [eveningMeal]: "Fish and chips",
 };
 
 meals;
@@ -396,14 +410,14 @@ JavaScript know that it needs to interpret the contents. Let's try doing the
 same thing without the square brackets:
 
 ```js
-const morningMeal = 'breakfast';
-const middayMeal = 'lunch';
-const eveningMeal = 'dinner';
+const morningMeal = "breakfast";
+const middayMeal = "lunch";
+const eveningMeal = "dinner";
 
 const meals = {
-  morningMeal: 'French toast',
-  middayMeal: 'Personal pizza',
-  eveningMeal: 'Fish and chips'
+  morningMeal: "French toast",
+  middayMeal: "Personal pizza",
+  eveningMeal: "Fish and chips",
 };
 
 meals;
@@ -435,12 +449,12 @@ containing all of the keys at the _top level_ of the `Object` instance.
 ```js
 const wednesdayMenu = {
   cheesePlate: {
-    soft: 'Brie',
-    semiSoft: 'Fontina',
-    hard: 'Provolone'
+    soft: "Brie",
+    semiSoft: "Fontina",
+    hard: "Provolone",
   },
-  fries: 'Sweet potato',
-  salad: 'Southwestern'
+  fries: "Sweet potato",
+  salad: "Southwestern",
 };
 
 Object.keys(wednesdayMenu);
@@ -452,7 +466,10 @@ Notice that it didn't pick up the keys in the nested `cheesePlate` `Object`
 `wednesdayMenu`. How do you think we could use `Object.keys()` to get a list of
 the keys inside the nested `Object`? Try it out in the REPL.
 
-> **NOTE**: The sequence in which keys are ordered in the returned `Array` is not consistent across browsers and should not be relied upon. All of the `Object`'s keys will be in the `Array`, but you can't count on `keyA` always being at index `0` of the `Array` and `keyB` always being at index `1`.
+> **NOTE**: The sequence in which keys are ordered in the returned `Array` is
+> not consistent across browsers and should not be relied upon. All of the
+> `Object`'s keys will be in the `Array`, but you can't count on `keyA` always
+> being at index `0` of the `Array` and `keyB` always being at index `1`.
 
 ### `Object.values()`
 
@@ -475,9 +492,9 @@ programming. Before moving on, be sure to use [repl.it][] to practice creating
 ## Resources
 
 - MDN
-  - [Object basics][Basics]
-  
-[Basics]: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Basics
+  - [Object basics][basics]
+
+[basics]: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Basics
 [object_methods]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/static
 [keys]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys
 [values]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/values
