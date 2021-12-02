@@ -59,8 +59,9 @@ address;
 
 This seems like a better solution, but it still has its drawbacks. Namely,
 `address[1]` is a **terrible** way to refer to the second line of an address.
-What if there is no second line, e.g., `['11 Broadway', 'New York', 'NY', '10004']`? Then `address[1]` will contain the city name instead of the floor
-number.
+What if there is no second line, e.g.,
+`['11 Broadway', 'New York', 'NY', '10004']`? Then `address[1]` will contain the
+city name instead of the floor number.
 
 We could standardize it, putting an empty string in `address[1]` if there's no
 second line in the address, but it's still poorly named. `address[1]` offers
