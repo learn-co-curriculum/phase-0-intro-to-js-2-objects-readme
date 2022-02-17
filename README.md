@@ -15,7 +15,7 @@ what they are, how to create them, and how to access values stored in them. In
 the next lesson, we'll learn how to modify `Object`s, both destructively and
 nondestructively.
 
-Be sure to follow along with the examples in this lesson in [repl.it][].
+Be sure to follow along with the examples in this lesson in [replit][].
 
 > **ASIDE**: You may have heard about or be familiar with the concept of
 > _object-oriented programming_. Un-helpfully JavaScript called this thing with
@@ -487,7 +487,7 @@ as well as when to use each. In the next lesson, we'll learn how to modify
 `Object`s. We'll also explore the relationship between `Object`s and `Array`s.
 
 Creating and interacting with `Object`s is an important skill in JavaScript
-programming. Before moving on, be sure to use [repl.it][] to practice creating
+programming. Before moving on, be sure to use [replit][] to practice creating
 `Object`s (including nested `Object`s) and accessing properties.
 
 ## Resources
@@ -499,4 +499,4 @@ programming. Before moving on, be sure to use [repl.it][] to practice creating
 [object_methods]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/static
 [keys]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys
 [values]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/values
-[repl.it]: https://repl.it/languages/javascript
+[replit]: https://replit.com/languages/javascript
